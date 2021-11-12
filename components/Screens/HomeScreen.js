@@ -13,6 +13,40 @@ import Choices from '../Choices';
 import Offers from '../Offers';
 import Headlines from '../Headlines';
 
+import RNLocation from 'react-native-location';
+
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['new NativeEventEmitter']); // Ignore log notification by message
+LogBox.ignoreAllLogs(); //Ignore all log notifications
+
+RNLocation.configure({
+  distanceFilter: 5.0
+})
+ 
+RNLocation.requestPermission({
+  ios: "whenInUse",
+  android: {
+    detail: "coarse"
+  }
+}).then(granted => {
+    if (granted) {
+      this.locationSubscription = RNLocation.subscribeToLocationUpdates(locations => {
+      })
+    }
+  })
+
+  RNLocation.configure({
+    distanceFilter: 100, // Meters
+    desiredAccuracy: {
+      ios: "best",
+      android: "balancedPowerAccuracy"
+    },
+    // Android only
+    androidProvider: "auto",
+    interval: 5000, // Milliseconds
+    fastestInterval: 10000, // Milliseconds
+    maxWaitTime: 5000, // Milliseconds
+})
 
 class HomeScreen extends Component {
   constructor(props) {
