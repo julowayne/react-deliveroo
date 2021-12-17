@@ -20,45 +20,25 @@ class Offers extends Component {
       <Card containerStyle={styles.offers}>
         <Image
           source={require('../assets/pub1.jpeg')}
-          style={{
-            width: 350,
-            height: 160,
-            borderRadius: 5,
-            marginHorizontal: 8,
-          }}
+          style={styles.offerCard}
         />
       </Card>
       <Card containerStyle={styles.offers}>
         <Image
           source={require('../assets/pub2.jpeg')}
-          style={{
-            width: 350,
-            height: 160,
-            borderRadius: 5,
-            marginHorizontal: 8,
-          }}
+          style={styles.offerCard}
         />
       </Card>
       <Card containerStyle={styles.offers}>
         <Image
           source={require('../assets/pub3.jpeg')}
-          style={{
-            width: 350,
-            height: 160,
-            borderRadius: 5,
-            marginHorizontal: 8,
-          }}
+          style={styles.offerCard}
         />
       </Card>
       <Card containerStyle={styles.offers}>
         <Image
           source={require('../assets/pub4.jpeg')}
-          style={{
-            width: 350,
-            height: 160,
-            borderRadius: 5,
-            marginHorizontal: 8,
-          }}
+          style={styles.offerCard}
         />
       </Card>
     </View>
@@ -78,5 +58,11 @@ const styles = StyleSheet.create({
     shadowRadius: 0,
     elevation: 0,
   },
+  offerCard: {
+    width: 350,
+    height: 160,
+    borderRadius: 5,
+    marginHorizontal: 8,
+  }
 });
 export default Offers;

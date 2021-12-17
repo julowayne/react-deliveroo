@@ -5,10 +5,12 @@ import HomeScreen from './components/Screens/HomeScreen';
 import LivraisonPage from './components/Screens/LivraisonPage';
 import ToGoPage from './components/Screens/ToGoPage';
 
+
 const Stack = createNativeStackNavigator();
 
-export default function App() {
-  return (
+export default class App extends React.PureComponent {
+  render() {
+    return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
@@ -28,5 +30,4 @@ export default function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
-  );
-}
+  )}};

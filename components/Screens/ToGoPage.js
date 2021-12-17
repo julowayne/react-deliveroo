@@ -145,25 +145,8 @@ class ToGoPage extends Component {
         </View>
         <View style={{flex: 4, padding: 0}}>
           <SearchBar
-            containerStyle={{
-              backgroundColor: 'transparent',
-              borderBottomColor: 'transparent',
-              borderTopColor: 'transparent',
-              marginHorizontal: 15,
-              marginTop: -35,
-            }}
-            inputContainerStyle={{
-              borderRadius: 80,
-              backgroundColor: '#f8f9fa',
-              shadowColor: '#000',
-              shadowOffset: {
-                width: 0,
-                height: 1,
-              },
-              shadowOpacity: 0.25,
-              shadowRadius: 3.84,
-              elevation: 5,
-            }}
+            containerStyle={styles.containerStyle}
+            inputContainerStyle={styles.inputContainerStyle}
             searchIcon={{color: '#00ccbc', size: 25}}
             lightTheme
             placeholder="Plats, restaurants ou types de c..."
@@ -183,6 +166,25 @@ class ToGoPage extends Component {
   }
 }
 const styles = StyleSheet.create({
+  containerStyle: {
+    backgroundColor: 'transparent',
+    borderBottomColor: 'transparent',
+    borderTopColor: 'transparent',
+    marginHorizontal: 15,
+    marginTop: -35,
+  },
+  inputContainerStyle:{
+    borderRadius: 80,
+    backgroundColor: '#f8f9fa',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
   mainContainer: {
     padding: 15
   },

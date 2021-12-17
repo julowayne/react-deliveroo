@@ -5,7 +5,16 @@ import {
   Image,
   StyleSheet,
 } from 'react-native';
-import { Card} from 'react-native-elements';
+import { Card } from 'react-native-elements';
+
+import {
+  SharedElement,
+  SharedElementTransition,
+  nodeFromRef
+} from 'react-native-shared-element';
+
+let startAncestor;
+let startNode;
 
 
 class Choices extends Component {
@@ -18,84 +27,46 @@ class Choices extends Component {
         justifyContent: 'space-around',
         marginHorizontal: 8,
         paddingVertical: 8,
-      }}>
-      <Card containerStyle={styles.choices}>
-        <Image
-          source={require('../assets/offers.png')}
-          style={{
-            height: 80,
-            width: 80,
-            borderRadius: 5,
-            marginHorizontal: 8,
-          }}
-        />
-        <Text
-          style={{
-            color: 'white',
-            marginTop: -25,
-            marginLeft: 15,
-            fontWeight: 'bold',
-          }}>
-          Offres
-        </Text>
-      </Card>
+      }} ref={ref => startAncestor = nodeFromRef(ref)}>
+        <SharedElement onNode={node => startNode = node}>
+          <Card containerStyle={styles.choices}>          
+            <Image
+              source={require('../assets/offers.png')}
+              style={styles.choicesCardImg}
+            />
+            <Text
+              style={styles.choicesCardText}>
+              Offres
+            </Text>
+          </Card>
+        </SharedElement>
       <Card containerStyle={styles.choices}>
         <Image
           source={require('../assets/acai.png')}
-          style={{
-            height: 80,
-            width: 80,
-            borderRadius: 5,
-            marginHorizontal: 8,
-          }}
+          style={styles.choicesCardImg}
         />
         <Text
-          style={{
-            color: 'white',
-            marginTop: -25,
-            marginLeft: 15,
-            fontWeight: 'bold',
-          }}>
+            style={styles.choicesCardText}>
           Petit Déj..
         </Text>
       </Card>
       <Card containerStyle={styles.choices}>
         <Image
           source={require('../assets/grocery.png')}
-          style={{
-            height: 80,
-            width: 80,
-            borderRadius: 5,
-            marginHorizontal: 8,
-          }}
+          style={styles.choicesCardImg}
         />
         <Text
-          style={{
-            color: 'white',
-            marginTop: -25,
-            marginLeft: 15,
-            fontWeight: 'bold',
-          }}>
+            style={styles.choicesCardText}>
           Courses
         </Text>
       </Card>
       <Card containerStyle={styles.choices}>
         <Image
           source={require('../assets/pizza.png')}
-          style={{
-            height: 80,
-            width: 120,
-            borderRadius: 5,
-            marginHorizontal: 8,
-          }}
+          style={styles.choicesCardImg}
         />
         <Text
-          style={{
-            color: 'white',
-            marginTop: -25,
-            marginLeft: 15,
-            fontWeight: 'bold',
-          }}>
+            style={styles.choicesCardText}>
           Pizzas
         </Text>
       </Card>
@@ -117,5 +88,17 @@ const styles = StyleSheet.create({
     shadowRadius: 0,
     elevation: 0,
   },
+  choicesCardImg : {
+    height: 80,
+    width: 80,
+    borderRadius: 5,
+    marginHorizontal: 8,
+  },
+  choicesCardText: {
+    color: 'white',
+    marginTop: -25,
+    marginLeft: 15,
+    fontWeight: 'bold',
+  }
 });
 export default Choices;

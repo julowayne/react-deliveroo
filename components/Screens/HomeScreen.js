@@ -1,52 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {
-  View,
-  StyleSheet,
-  ScrollView,
-  Animated,
-  Easing,
-} from 'react-native';
-import {SearchBar, Card} from 'react-native-elements';
+import { View, StyleSheet,  ScrollView,  Animated,  Easing,} from 'react-native';
+import {SearchBar} from 'react-native-elements';
 import Header from '../header';
 import Choices from '../Choices';
 import Offers from '../Offers';
 import Headlines from '../Headlines';
 
-import RNLocation from 'react-native-location';
-
-import { LogBox } from 'react-native';
-LogBox.ignoreLogs(['new NativeEventEmitter']); // Ignore log notification by message
-LogBox.ignoreAllLogs(); //Ignore all log notifications
-
-RNLocation.configure({
-  distanceFilter: 5.0
-})
- 
-RNLocation.requestPermission({
-  ios: "whenInUse",
-  android: {
-    detail: "coarse"
-  }
-}).then(granted => {
-    if (granted) {
-      this.locationSubscription = RNLocation.subscribeToLocationUpdates(locations => {
-      })
-    }
-  })
-
-  RNLocation.configure({
-    distanceFilter: 100, // Meters
-    desiredAccuracy: {
-      ios: "best",
-      android: "balancedPowerAccuracy"
-    },
-    // Android only
-    androidProvider: "auto",
-    interval: 5000, // Milliseconds
-    fastestInterval: 10000, // Milliseconds
-    maxWaitTime: 5000, // Milliseconds
-})
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -93,12 +53,12 @@ class HomeScreen extends Component {
           />
           <ScrollView>
             <View style={styles.choicesContainer}>
-              <ScrollView horizontal={true}>
+              <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
               <Choices />
               </ScrollView>
             </View>
             <View style={styles.offersContainer}>
-              <ScrollView horizontal={true}>
+              <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
               <Offers />
               </ScrollView>
             </View>
